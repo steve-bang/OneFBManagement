@@ -100,3 +100,18 @@ và bảng tổng hợp `daily_store_summary(store_id, date, revenue, cogs, orde
 ## Phase mapping
 Phase 1: 12 (một phần), 9, 2, 1, 3, 4, 7 (payment). Phase 2: 5, 11, 6, 7 (ca/quỹ), 8. Phase 3: 10, đa chi nhánh, approval, dự báo. Phase 4: web admin.
 Toàn bộ bảng được thiết kế sẵn để migration thêm dần không phá cấu trúc.
+
+## Bổ sung từ tài liệu nghiệp vụ (docs/business)
+- `store`: thêm `business_day_cutoff`, `price_includes_tax`, `service_charge_rate`, `discount_limit_pct`, `qr_confirm_mode`, `bank_account` (VietQR), `service_mode` (table|counter|both).
+- `tenant`: thêm `business_type` (household|company), `tax_regime`.
+- `tax_rate_history(tenant_id|store_id, product_id|null, rate, valid_from, valid_to)`: thuế suất theo ngày bán.
+- `order`: thêm `business_date`, `queue_no` (số thứ tự quầy), `invoice_requested`, `invoice_buyer jsonb` (MST/tên/địa chỉ, xử lý sau), `version` (khoá lạc quan).
+- `order_item`: thêm `qty numeric(10,3)`, `unit`, `voided_by`, `approved_by`, `cost_snapshot`.
+- `order_adjustment.kind`: `discount|surcharge|service_charge|comp|rounding`.
+- `payment`: thêm `tip_amount`, `received_amount`, `change_amount`, `bank_txn_ref`, `kind` (sale|deposit|overpayment).
+- `guest_session(id, table_session_id, created_at, expires_at)`; `order_item.placed_by_guest`.
+- `approval_request` gắn `requested_by`, `approved_by`, `reason`, `entity`.
+- `print_job(id, store_id, printer_id, kind: ticket|label|bill, ref_id, status, attempts)`; `printer(id, store_id, name, address, paper_width, station_id)`.
+- `device(id, store_id, kind: pos|kds|phone, last_seen_at)`.
+- `sequence(store_id, scope, date, value)` để sinh mã đơn/ số thứ tự.
+- `unit_conversion(ingredient_id, from_unit, to_unit, factor)`; `recipe_line.yield_pct`.
