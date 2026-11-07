@@ -2,6 +2,8 @@
 
 Mục tiêu: bộ tài liệu nghiệp vụ đủ chi tiết để thiết kế UI và viết code mà không phải đoán, và **đúng thực tế vận hành F&B tại Việt Nam**.
 
+> **Trạng thái**: bộ tài liệu `docs/business/` đã có bản đầu (v0.1). Các mục đánh dấu [N] và "Câu hỏi mở" cần xác nhận với người trong nghề/ kế toán.
+
 ## A. Cấu trúc thư mục
 
 ```
