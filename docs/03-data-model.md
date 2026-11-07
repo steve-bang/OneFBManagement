@@ -73,9 +73,11 @@ Dùng `order_item.station_id/status` + `kitchen_ticket(id, station_id, order_id,
 `attendance(id, staff_id, check_in, check_out, source)`, `shift_swap_request`, `leave_request`, `task`, `performance_review`.
 
 ### 7. Cashier & Cash
+> Lưu ý: VietQR xác nhận thủ công (`payment.confirmed_by`, `confirmed_at`). `e_invoice` là bảng dành sẵn, CHƯA triển khai (tạm bỏ qua).
+
 `cash_shift(id, store_id, cashier_id, device_id, opened_at, closed_at, opening_cash, expected_cash, counted_cash, variance, status)`,
 `cash_movement(id, cash_shift_id, kind: in|out, amount, reason, approved_by)`,
-`payment(id, order_id, cash_shift_id, method: cash|vietqr|bank_transfer|other, amount, status, provider, provider_txn_id unique, qr_payload, paid_at, idempotency_key unique)`,
+`payment(id, order_id, cash_shift_id, method: cash|vietqr|bank_transfer|other, amount, status, provider, provider_txn_id null unique, qr_payload, confirmed_by, confirmed_at, paid_at, idempotency_key unique)`,
 `payment_event(id, payment_id, raw jsonb, received_at)` (lưu webhook thô),
 `e_invoice(id, order_id, provider, series, number, lookup_code, status, issued_at, buyer_tax_code, xml_url)`.
 

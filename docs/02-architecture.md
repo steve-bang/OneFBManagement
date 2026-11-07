@@ -21,7 +21,7 @@
 4. **Backend là nguồn chân lý**: client không tự tính tiền/tồn kho. Giá, khuyến mãi, thuế tính ở server; đơn lưu **snapshot** giá/tên món tại thời điểm đặt.
 5. **Realtime**: WebSocket (Socket.IO) room theo `store:{id}`, `table:{id}`, `station:{id}`; Redis pub/sub để scale ngang. Sự kiện: `order.created`, `order_item.status_changed`, `table.status_changed`, `payment.confirmed`, `staff.called`.
 6. **Event-driven nội bộ**: `payment.confirmed` → ghi sổ quỹ, trừ kho (BullMQ job), cộng điểm, xuất HĐĐT. Job idempotent, có retry.
-7. **Idempotency & tiền**: mọi lệnh ghi quan trọng nhận `Idempotency-Key`. Thanh toán VietQR: webhook + job đối soát định kỳ để xử lý "đã trả nhưng chưa nhận callback".
+7. **Idempotency & tiền**: mọi lệnh ghi quan trọng nhận `Idempotency-Key`. Thanh toán VietQR giai đoạn đầu: thu ngân xác nhận tay (có audit log); sau này thêm webhook + job đối soát qua `PaymentProvider`.
 8. **Audit log** append-only cho thao tác nhạy cảm (huỷ món, giảm giá, hoàn tiền, đổi giá, sửa quyền, chênh lệch quỹ).
 9. **QR bàn**: URL `https://<domain>/t/<signed_token>` -> token ký (HMAC) gắn `store+table`, có thể xoay (rotate) khi bị lạm dụng. Phiên khách (`table_session`) cho phép nhiều khách cùng đặt trên một bàn.
 10. **Hợp đồng API**: REST + OpenAPI, sinh type cho client; versioning `/v1`.
@@ -53,5 +53,5 @@ docs/
 | Thanh toán một phần/chia bill | `Payment` nhiều dòng trên một order; `bill_split` theo item hoặc số tiền |
 | Huỷ món khi bếp đã làm | Cần quyền + lý do; item thành `voided`, ghi hao hụt, audit log |
 | Chuyển bàn | Đổi `order.table_id`, lưu `table_transfer`; lịch sử order giữ nguyên |
-| Đã trả nhưng thiếu callback | Job đối soát + thu ngân xác nhận tay; trạng thái `pending` hết hạn mới huỷ |
+| Khách báo đã chuyển khoản | Thu ngân kiểm tra tài khoản rồi xác nhận tay; `pending` không tự huỷ khi chưa có người xử lý |
 | Bếp báo hết món | Item `out_of_stock`, thông báo phục vụ + khách; menu tự đánh dấu tạm hết |
