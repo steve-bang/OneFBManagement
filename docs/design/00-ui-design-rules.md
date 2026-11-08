@@ -2,13 +2,13 @@
 
 Bộ quy tắc bắt buộc khi thiết kế và dựng UI cho OneFB (POS, KDS, app điện thoại, PWA khách QR, web admin). Mọi quy tắc đều dựa trên bối cảnh quán F&B Việt Nam trong `business/01-personas-and-roles.md`, `business/02-vietnam-context.md` và `business/16-nonfunctional.md`.
 
-> **Trạng thái**: v0.1. Mục đánh dấu [N] cần xác nhận với người trong nghề hoặc sau khi thử với người dùng thật.
+> **Trạng thái**: v0.2, đã đối chiếu với bản UI kit "OneFB UI Kit" (mục 16). Mục đánh dấu [N] cần xác nhận với người trong nghề hoặc sau khi thử với người dùng thật.
 
 ## 0. Cách dùng
 
 - Mỗi quy tắc có mã `UI-<NHÓM>-nnn` để trích dẫn trong review và ticket.
 - **PHẢI** (MUST): vi phạm là lỗi, không được merge. **NÊN** (SHOULD): có thể bỏ qua nếu ghi rõ lý do trong PR.
-- Token là nguồn sự thật của giá trị (màu, cỡ chữ, khoảng cách). Tài liệu này là nguồn sự thật của **cách dùng**. Bảng token và UI kit mẫu: artifact "OneFB Design Tokens" và "OneFB UI Kit" (xem mục 16).
+- Token là nguồn sự thật của giá trị (màu, cỡ chữ, khoảng cách). Tài liệu này là nguồn sự thật của **cách dùng**. Bảng token và UI kit mẫu: artifact "OneFB Design Tokens" và "OneFB UI Kit" (xem mục 17).
 - Khi quy tắc xung đột với một yêu cầu nghiệp vụ, nghiệp vụ thắng, và ghi ngoại lệ vào mục 15.
 
 ## 1. Nguyên tắc nền
@@ -49,6 +49,7 @@ Bộ quy tắc bắt buộc khi thiết kế và dựng UI cho OneFB (POS, KDS, 
 - **UI-CLR-005 (PHẢI)** Gradient (`gradient-*`) chỉ dùng cho landing, hero, tính năng AI, bảng giá, empty state. Cấm trên bảng, form, nút, KDS, POS.
 - **UI-CLR-006 (PHẢI)** Hỗ trợ cả hai theme. Theme sáng là mặc định cho điện thoại, quầy, khách, web admin. Theme tối cho KDS và quán thiếu sáng. Theme theo thiết lập hệ thống, người dùng đổi được.
 - **UI-CLR-007 (NÊN)** Tối đa 3 màu nhấn trên một màn hình (gồm màu trạng thái). Quá nhiều màu thì giảm nhãn trạng thái về xám.
+- **UI-CLR-009 (PHẢI)** Phân cấp chữ: `text-primary` cho nội dung chính và số tiền, `text-secondary` cho nhãn và thông tin phụ, `text-muted` chỉ cho gợi ý và placeholder và chỉ đặt trên `bg-surface` (nền khác không đạt 4.5:1). Dùng `bg-brand-subtle` + `text-on-brand-subtle` để đánh dấu mục đang chọn.
 - **UI-CLR-008 (NÊN)** Biểu đồ dùng `chart-1…6` theo thứ tự, kèm nhãn trực tiếp hoặc chú giải. Không quá 6 chuỗi trên một biểu đồ.
 
 ## 4. Chữ, số và định dạng
@@ -59,7 +60,7 @@ Bộ quy tắc bắt buộc khi thiết kế và dựng UI cho OneFB (POS, KDS, 
 - **UI-TYP-004 (PHẢI)** Số tiền, số lượng, giờ và đồng hồ dùng chữ số đều (`font-variant-numeric: tabular-nums`), căn phải trong bảng.
 - **UI-TYP-005 (PHẢI)** Hỗ trợ cỡ chữ hệ thống lớn hơn (Dynamic Type, đến 130%) trên điện thoại và PWA khách mà không cắt chữ hay che nút.
 - **UI-TYP-006 (PHẢI)** Định dạng Việt Nam [N]:
-  - Tiền: `45.000đ` (dấu chấm phân tách nghìn, không số thập phân), theo `business/16-nonfunctional.md`. UI kit mẫu hiện hiển thị `45.000 ₫`, cần thống nhất.
+  - Tiền: `45.000 ₫` (dấu chấm phân tách nghìn, không số thập phân, ký hiệu ₫ sau số). Dùng khoảng trắng không ngắt (U+00A0) giữa số và ₫ để ký hiệu không rớt xuống dòng. Dạng ngắn `45.000đ` chỉ dùng trong câu văn và thông báo.
   - Ngày: `dd/MM/yyyy`. Giờ: 24 giờ `14:30`. Thời gian chờ ở bếp: `mm:ss`.
   - Số điện thoại: `0901 234 567`.
 - **UI-TYP-007 (NÊN)** Một màn hình tối đa 3 cỡ chữ và 2 độ đậm. Tiêu đề căn trái, không in hoa toàn bộ trừ nhãn cột ngắn.
@@ -94,7 +95,7 @@ Bộ quy tắc bắt buộc khi thiết kế và dựng UI cho OneFB (POS, KDS, 
 ## 6. Component
 
 ### 6.1 Nút
-- **UI-CMP-001 (PHẢI)** Nhãn nói đúng việc sẽ xảy ra, động từ trước: "Gửi bếp", "Thanh toán 185.000đ", "Huỷ món". Cấm "OK", "Có", "Gửi" trống.
+- **UI-CMP-001 (PHẢI)** Nhãn nói đúng việc sẽ xảy ra, động từ trước: "Gửi bếp", "Thanh toán 185.000 ₫", "Huỷ món". Cấm "OK", "Có", "Gửi" trống.
 - **UI-CMP-002 (PHẢI)** Một nút chính mỗi vùng (UI-CLR-001). Nút nguy hiểm dùng `feedback-danger`, đặt xa nút chính.
 - **UI-CMP-003 (PHẢI)** Nút có đủ trạng thái: mặc định, hover (web), pressed, focus, disabled, loading. Disabled phải có lý do hiển thị gần đó nếu người dùng không tự đoán được.
 - **UI-CMP-004 (PHẢI)** Khi đang gửi, nút chuyển sang loading và **không nhận chạm lần hai** (tránh tạo phiếu trùng, dù API đã có `Idempotency-Key`).
@@ -147,7 +148,7 @@ Mỗi màn hình và mỗi danh sách PHẢI thiết kế đủ 6 trạng thái.
 | Trạng thái | Quy tắc |
 |---|---|
 | Đang tải | **UI-STA-001** Khung xương (skeleton) giữ đúng bố cục, không dùng vòng quay toàn màn hình. Dữ liệu cache hiện ngay, cập nhật sau. |
-| Rỗng | **UI-STA-002** Nói rõ lý do và việc nên làm tiếp, kèm một nút ("Chưa có đơn nào hôm nay. Mở bàn"). Có thể dùng gradient ở minh hoạ. |
+| Rỗng | **UI-STA-002** Nói rõ lý do và việc nên làm tiếp, kèm một nút ("Chưa có đơn nào hôm nay" kèm nút "Mở bàn"). Có thể dùng gradient ở minh hoạ. |
 | Có dữ liệu | Trạng thái thiết kế chính. |
 | Lỗi | **UI-STA-003** Nói chuyện gì xảy ra và cách xử lý, có nút "Thử lại". Không hiển thị mã lỗi kỹ thuật cho người dùng cuối, ghi mã nhỏ ở cuối cho hỗ trợ. |
 | Mất mạng | **UI-STA-004** Banner `conn-offline` cố định đầu màn hình, nội dung: mất kết nối và việc gì vẫn làm được. Không đóng được khi còn mất mạng. Hành động ghi vào hàng đợi, hiển thị rõ "chưa gửi". |
@@ -257,9 +258,56 @@ Ghi tại đây mọi trường hợp bỏ qua quy tắc, kèm lý do và ngày.
 
 | Ngày | Quy tắc | Ngoại lệ | Lý do |
 |---|---|---|---|
-| (trống) | | | |
+| 08/11/2026 | UI-TOK-001 | UI kit: nhãn chữ trắng và bóng chữ viết tay trên ô mẫu gradient; màu chữ nhãn trên ô thang màu gốc tính bằng độ sáng | Chỉ là mẫu minh hoạ, nền gradient và thang màu nằm ngoài cặp `bg-*`/`text-*` |
+| 08/11/2026 | UI-TOK-001 | UI kit: nút nguy hiểm khi rê chuột giảm độ sáng bằng `filter`, chưa có token `bg-danger-hover` | Cần thêm token trạng thái cho nút nguy hiểm, xem mục 16.3 |
+| 08/11/2026 | UI-CMP-051 | UI kit: toast tự tắt sau 2,6 giây, quy tắc ghi khoảng 3 giây | Chênh lệch nhỏ, chấp nhận |
 
-## 16. Tài liệu liên quan
+## 16. Đối chiếu với UI kit
+
+Bản UI kit mẫu ("OneFB UI Kit") dựng từ cùng bộ token. Bảng dưới cho biết quy tắc nào đã có mẫu để tham khảo.
+
+### 16.1 Quy tắc đã có mẫu trong UI kit
+
+| Phần trong UI kit | Quy tắc áp dụng | Token chính |
+|---|---|---|
+| Nút (4 biến thể, 4 cỡ, vô hiệu hoá, nút icon) | UI-CLR-001, UI-CMP-001..003, UI-LAY-002..003 | `bg-action*`, `feedback-danger`, `target-*` |
+| Biểu mẫu (ô nhập, lỗi, tìm kiếm, ô chọn, công tắc, nhóm lựa chọn, bộ tăng giảm, ô tích) | UI-CMP-010..015 | `border-control`, `focus-ring`, `feedback-danger` |
+| Trạng thái (pill bàn, món, thời gian chờ; 4 loại thông báo) | UI-GEN-003, UI-CLR-002..003, UI-CMP-020 | `bg-table-*`, `bg-item-*`, `bg-sla-*`, `bg-*-subtle` |
+| Thẻ (thẻ bàn, thẻ món, thẻ chỉ số, biểu đồ cột) | UI-CMP-021..023, UI-CLR-008 | `table-card-min`, `admin-metric`, `chart-1…6` |
+| Màn hình bán hàng (menu, giỏ, tổng, Gửi bếp) | UI-POS-001..002, UI-LAY-004 | `target-pos`, `pos-*` |
+| Phiếu bếp (đồng hồ chạy, đổi màu ở 5 và 10 phút, Xong món) | UI-KDS-001..004, UI-RT-003 | `bg-sla-*`, `kds-*`, `target-kds` |
+| Hộp PIN duyệt giảm giá | UI-DNG-002 | `pin-key`, `z-pin-approval`, `bg-scrim` |
+| Bảng dữ liệu (web admin) | UI-CMP-030 | `row-compact`, `admin-label` |
+| Điều hướng (tab đáy 4 mục, sidebar) | UI-CMP-040..042, UI-LAY-004 | `bg-brand-subtle`, `sidebar-width` |
+| Phản hồi (banner mất kết nối, toast, màn hình rỗng) | UI-STA-002, UI-STA-004, UI-CMP-051 | `bg-conn-offline`, `z-offline`, `z-toast` |
+| Gradient | UI-CLR-005 | `gradient-*` |
+| Thang màu gốc | UI-TOK-002 | `slate`, `night`, `brand`, `orange`, `green`, `red`, `amber`, `blue`, `pink`, `cyan` |
+| Nút đổi giao diện sáng, tối, tự động | UI-CLR-006 | `data-theme` |
+
+### 16.2 Quy tắc chưa có mẫu trong UI kit (cần bổ sung)
+
+| Quy tắc | Thiếu |
+|---|---|
+| UI-CMP-003, UI-CMP-004 | Nút ở trạng thái đang tải và chặn chạm hai lần |
+| UI-STA-001 | Khung xương khi tải |
+| UI-STA-003 | Màn hình lỗi có nút "Thử lại" |
+| UI-STA-005, UI-DNG-006 | Màn hình hoặc hộp "Cần quản lý duyệt" |
+| UI-STA-006 | Ba mức trạng thái gửi: đang gửi, đã gửi, chưa gửi (chờ mạng) |
+| UI-CMP-050, UI-CMP-052 | Modal và sheet kéo từ đáy dùng chung (UI kit mới có hộp PIN trên lớp phủ) |
+| UI-DNG-001, UI-DNG-003 | Hộp xác nhận huỷ món nêu hậu quả, kèm danh sách lý do |
+| UI-DNG-005 | Toast có nút "Hoàn tác" |
+| UI-CMP-032 | Bộ lọc khoảng ngày, sắp xếp cột, xuất file |
+| UI-QR-003, UI-QR-005 | Màn hình khách bằng tiếng Anh, trạng thái đơn của khách |
+| UI-KDS-005, UI-KDS-006 | Mẫu KDS ở theme tối mặc định và chế độ tương phản cao |
+| UI-TXT-004 | Bộ icon chính thức (UI kit dùng bộ SVG tự vẽ) |
+
+### 16.3 Việc cần làm ở UI kit hoặc token
+
+1. Thêm token cho trạng thái hover của nút nguy hiểm (ví dụ `bg-danger-hover`) để bỏ ngoại lệ ở mục 15.
+2. Bổ sung các mẫu ở 16.2 theo thứ tự ưu tiên: lỗi, tải và chưa gửi, hộp xác nhận huỷ, modal dùng chung.
+3. Hộp PIN trong UI kit chỉ minh hoạ PIN 4 số. Quy tắc UI-DNG-002 cho phép 4 đến 6 số, cần thêm mẫu 6 số.
+
+## 17. Tài liệu liên quan
 
 - Bảng token và component xem trực tiếp: artifact "OneFB Design Tokens" (token, README, ví dụ nút, thẻ bàn, phiếu bếp, bàn phím PIN, thẻ chỉ số) và "OneFB UI Kit" (bộ giao diện tương tác).
 - `business/01-personas-and-roles.md`: vai trò và thiết bị.
@@ -268,10 +316,9 @@ Ghi tại đây mọi trường hợp bỏ qua quy tắc, kèm lý do và ngày.
 - `business/16-nonfunctional.md`: hiệu năng, thiết bị, khả dụng.
 - `business/00-glossary.md`: thuật ngữ.
 
-## 17. Câu hỏi mở [N]
+## 18. Câu hỏi mở [N]
 
-1. Định dạng tiền: `45.000đ` (theo NFR) hay `45.000 ₫`? Cần thống nhất giữa tài liệu, UI kit và bản token.
-2. Ngưỡng 5 phút và 10 phút của phiếu bếp có đúng với thực tế quán? Có cần cấu hình theo từng món hay station?
-3. Có cần chế độ tương phản cao cho KDS ngay từ Phase 1?
-4. Số lần chạm tối đa để gửi món (UI-GEN-002): 3 chạm có khả thi với menu nhiều option?
-5. Bộ icon chính thức (đang dùng bộ SVG tự vẽ trong UI kit).
+1. Ngưỡng 5 phút và 10 phút của phiếu bếp có đúng với thực tế quán? Có cần cấu hình theo từng món hay station?
+2. Có cần chế độ tương phản cao cho KDS ngay từ Phase 1?
+3. Số lần chạm tối đa để gửi món (UI-GEN-002): 3 chạm có khả thi với menu nhiều option?
+4. Bộ icon chính thức (đang dùng bộ SVG tự vẽ trong UI kit).

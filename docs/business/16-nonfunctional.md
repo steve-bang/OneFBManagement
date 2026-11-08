@@ -39,7 +39,7 @@ Ngoài P1: bán hàng hoàn toàn offline, đồng bộ nhiều thiết bị off
 - Chống chạm nhầm: nút nguy hiểm (huỷ, void) có xác nhận.
 
 ## 6. Khả dụng/ UX vận hành
-- Tiếng Việt chính; tiếng Anh cho menu khách; định dạng `45.000đ`, ngày `dd/MM/yyyy`.
+- Tiếng Việt chính; tiếng Anh cho menu khách; định dạng `45.000 ₫`, ngày `dd/MM/yyyy`.
 - Thao tác một tay cho phục vụ; chữ lớn cho bếp; độ tương phản cao (ánh sáng cửa hàng).
 - Tiêu chuẩn tiếp cận cơ bản (cỡ chữ, tương phản, nhãn).
 - Đào tạo nhân viên mới < 15 phút cho vai trò Waiter/ Kitchen.

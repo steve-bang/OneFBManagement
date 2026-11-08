@@ -64,7 +64,7 @@
 - **Đặt cọc** khi đặt bàn tiệc nhóm lớn. [V]
 - **App giao hàng** (GrabFood, ShopeeFood, BeFood): đơn đến từ tablet riêng của đối tác, quán phải nhập lại vào POS; doanh thu qua đối tác có phí hoa hồng và đối soát theo kỳ. Phase 1: nhập tay kênh "đơn app giao hàng"; tích hợp tự động để sau. [V]
 - Mạng internet quán **không ổn định**; mất điện/mất mạng làm gián đoạn; cần chịu lỗi tối thiểu (xem `16-nonfunctional.md`).
-- Ngôn ngữ giao diện: **tiếng Việt chính**, có tiếng Anh cho menu khách (khách du lịch). Tiền hiển thị `45.000đ` (dấu chấm ngăn nghìn).
+- Ngôn ngữ giao diện: **tiếng Việt chính**, có tiếng Anh cho menu khách (khách du lịch). Tiền hiển thị `45.000 ₫` (dấu chấm ngăn nghìn, khoảng trắng không ngắt trước ₫).
 
 ## 9. Việc phải xác nhận với người trong nghề (danh sách tổng)
 Xem mục "Câu hỏi mở" trong từng module và tổng hợp ở `17-phase1-scope.md`.
