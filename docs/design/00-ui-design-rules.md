@@ -161,7 +161,7 @@ Mỗi màn hình và mỗi danh sách PHẢI thiết kế đủ 6 trạng thái.
 
 ### 9.1 KDS (bếp, bar)
 - **UI-KDS-001 (PHẢI)** Chữ tối thiểu 20px nội dung, 28px số bàn, 32px đồng hồ. Đọc được ở khoảng cách 1,5 m.
-- **UI-KDS-002 (PHẢI)** Màu đầu phiếu theo thời gian chờ (`sla-ok/warn/late`), ngưỡng cấu hình theo station (mặc định 5 phút và 10 phút [N]).
+- **UI-KDS-002 (PHẢI)** Màu đầu phiếu theo thời gian chờ (`sla-ok/warn/late`), ngưỡng cấu hình theo station (mặc định 10 phút cảnh báo, 15 phút quá hạn, theo BR-KIT-003).
 - **UI-KDS-003 (PHẢI)** Nút thao tác cao `target-kds`, một chạm cho "Xong món". Không dùng cử chỉ vuốt là cách duy nhất.
 - **UI-KDS-004 (PHẢI)** Món bị huỷ hiển thị nổi bật (`item-cancelled`) và yêu cầu bếp xác nhận đã dừng (BR-KIT-008).
 - **UI-KDS-005 (PHẢI)** Mặc định theme tối, tắt tự khoá màn hình, hiển thị cảnh báo đỏ khi mất kết nối.
@@ -275,7 +275,7 @@ Bản UI kit mẫu ("OneFB UI Kit") dựng từ cùng bộ token. Bảng dưới
 | Trạng thái (pill bàn, món, thời gian chờ; 4 loại thông báo) | UI-GEN-003, UI-CLR-002..003, UI-CMP-020 | `bg-table-*`, `bg-item-*`, `bg-sla-*`, `bg-*-subtle` |
 | Thẻ (thẻ bàn, thẻ món, thẻ chỉ số, biểu đồ cột) | UI-CMP-021..023, UI-CLR-008 | `table-card-min`, `admin-metric`, `chart-1…6` |
 | Màn hình bán hàng (menu, giỏ, tổng, Gửi bếp) | UI-POS-001..002, UI-LAY-004 | `target-pos`, `pos-*` |
-| Phiếu bếp (đồng hồ chạy, đổi màu ở 5 và 10 phút, Xong món) | UI-KDS-001..004, UI-RT-003 | `bg-sla-*`, `kds-*`, `target-kds` |
+| Phiếu bếp (đồng hồ chạy, đổi màu theo ngưỡng, Xong món). Demo hiện dùng ngưỡng 5 và 10 phút, cần chỉnh lên 10 và 15 | UI-KDS-001..004, UI-RT-003 | `bg-sla-*`, `kds-*`, `target-kds` |
 | Hộp PIN duyệt giảm giá | UI-DNG-002 | `pin-key`, `z-pin-approval`, `bg-scrim` |
 | Bảng dữ liệu (web admin) | UI-CMP-030 | `row-compact`, `admin-label` |
 | Điều hướng (tab đáy 4 mục, sidebar) | UI-CMP-040..042, UI-LAY-004 | `bg-brand-subtle`, `sidebar-width` |
@@ -319,7 +319,7 @@ Bản UI kit mẫu ("OneFB UI Kit") dựng từ cùng bộ token. Bảng dưới
 
 ## 18. Câu hỏi mở [N]
 
-1. Ngưỡng 5 phút và 10 phút của phiếu bếp có đúng với thực tế quán? Có cần cấu hình theo từng món hay station?
+1. Ngưỡng 10 phút và 15 phút của phiếu bếp có đúng với thực tế quán? Có cần cấu hình theo từng món hay station?
 2. Có cần chế độ tương phản cao cho KDS ngay từ Phase 1?
 3. Số lần chạm tối đa để gửi món (UI-GEN-002): 3 chạm có khả thi với menu nhiều option?
 4. Bộ icon chính thức (đang dùng bộ SVG tự vẽ trong UI kit).
