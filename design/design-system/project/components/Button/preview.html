@@ -1,0 +1,19 @@
+<!-- @dsCard group="Actions" height=300 subtitle="Bốn cỡ theo vùng chạm" -->
+<!doctype html>
+<html><head><meta charset="utf-8">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;600;700&display=swap">
+<style>
+body{margin:0;padding:24px;background:var(--bg-page);color:var(--text-primary);font-family:var(--font-sans)}
+.row{display:flex;gap:16px;align-items:center;flex-wrap:wrap;margin-bottom:16px}
+.cap{width:150px;font-size:13px;line-height:18px;color:var(--text-secondary)}
+.btn{font:inherit;font-weight:600;border:0;border-radius:var(--radius-md);padding:0 24px;cursor:pointer;background:var(--bg-action);color:var(--text-on-action)}
+.btn.sec{background:var(--bg-surface);color:var(--text-primary);box-shadow:inset 0 0 0 1px var(--border-control)}
+.btn.dng{background:var(--feedback-danger);color:var(--bg-surface)}
+.btn:focus-visible{outline:2px solid var(--focus-ring);outline-offset:2px}
+.m{height:var(--target-min);font-size:14px}.c{height:var(--target-comfortable);font-size:15px}.p{height:var(--target-pos);font-size:16px}.k{height:var(--target-kds);font-size:20px;padding:0 32px}
+</style></head><body>
+<div class="row"><span class="cap">target-min 44</span><button class="btn m">Gửi bếp</button><button class="btn sec m">Thêm món</button></div>
+<div class="row"><span class="cap">target-comfortable 48</span><button class="btn c">Thanh toán</button><button class="btn sec c">Chia hoá đơn</button></div>
+<div class="row"><span class="cap">target-pos 56</span><button class="btn p">Thanh toán 85.000 ₫</button><button class="btn dng p">Huỷ món</button></div>
+<div class="row"><span class="cap">target-kds 72</span><button class="btn k">Xong món</button><button class="btn sec k">Hết hàng</button></div>
+</body></html>

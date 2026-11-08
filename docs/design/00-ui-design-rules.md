@@ -309,6 +309,7 @@ Bản UI kit mẫu ("OneFB UI Kit") dựng từ cùng bộ token. Bảng dưới
 
 ## 17. Tài liệu liên quan
 
+- Mã nguồn token và UI kit trong repo: `design/` (xem `design/README.md`).
 - Bảng token và component xem trực tiếp: artifact "OneFB Design Tokens" (token, README, ví dụ nút, thẻ bàn, phiếu bếp, bàn phím PIN, thẻ chỉ số) và "OneFB UI Kit" (bộ giao diện tương tác).
 - `business/01-personas-and-roles.md`: vai trò và thiết bị.
 - `business/13-notifications-and-realtime.md`: âm báo và sự kiện.

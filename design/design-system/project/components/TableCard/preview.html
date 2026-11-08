@@ -1,0 +1,27 @@
+<!-- @dsCard group="Floor" height=340 subtitle="Sơ đồ bàn theo trạng thái" -->
+<!doctype html>
+<html><head><meta charset="utf-8">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;600;700&display=swap">
+<style>
+body{margin:0;padding:24px;background:var(--bg-page);color:var(--text-primary);font-family:var(--font-sans)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:12px}
+.t{background:var(--bg-surface);border:1px solid var(--border-subtle);border-radius:var(--radius-md);padding:12px;display:flex;flex-direction:column;gap:8px;min-height:104px}
+.n{font-size:18px;line-height:26px;font-weight:600}
+.pill{align-self:flex-start;border-radius:var(--radius-full);padding:2px 10px;font-size:13px;line-height:18px;font-weight:500}
+.meta{font-size:13px;line-height:18px;color:var(--text-secondary);font-variant-numeric:tabular-nums}
+.price{font-size:15px;font-weight:700;font-variant-numeric:tabular-nums}
+.free{background:var(--bg-table-free);color:var(--text-table-free)}
+.occ{background:var(--bg-table-occupied);color:var(--text-table-occupied)}
+.pay{background:var(--bg-table-payment);color:var(--text-table-payment)}
+.res{background:var(--bg-table-reserved);color:var(--text-table-reserved)}
+.help{background:var(--bg-table-help);color:var(--text-table-help)}
+</style></head><body>
+<div class="grid">
+<div class="t"><span class="n">Bàn 01</span><span class="pill free">Trống</span><span class="meta">4 chỗ</span></div>
+<div class="t"><span class="n">Bàn 02</span><span class="pill occ">Đang phục vụ</span><span class="meta">25 phút</span><span class="price">185.000 ₫</span></div>
+<div class="t"><span class="n">Bàn 03</span><span class="pill pay">Chờ thanh toán</span><span class="meta">48 phút</span><span class="price">420.000 ₫</span></div>
+<div class="t"><span class="n">Bàn 04</span><span class="pill res">Đặt 19:30</span><span class="meta">6 chỗ · Anh Minh</span></div>
+<div class="t"><span class="n">Bàn 05</span><span class="pill help">Gọi hỗ trợ</span><span class="meta">chờ 01:10</span></div>
+<div class="t"><span class="n">Bàn 06</span><span class="pill occ">Đang phục vụ</span><span class="meta">8 phút</span><span class="price">65.000 ₫</span></div>
+</div>
+</body></html>
